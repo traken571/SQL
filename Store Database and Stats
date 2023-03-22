@@ -1,0 +1,38 @@
+--Create a clothing store database. 
+
+create table clothesstore (id integer, name text, price integer, popularity integer);
+
+insert into clothesstore values (1, "pink blouse", 15, 50);
+insert into clothesstore values (2, "tan blouse", 15, 30);
+insert into clothesstore values (3, "blue blouse", 15, 15);
+insert into clothesstore values (4, "jeans", 45, 25);
+insert into clothesstore values (5, "pink skirt", 20, 60);
+insert into clothesstore values (6, "white shirt", 10, 65);
+insert into clothesstore values (7, "black shirt", 10, 55);
+insert into clothesstore values (8, "long sleeve shirt", 12, 23);
+insert into clothesstore values (9, "long sleeve shirt", 12, 25);
+insert into clothesstore values (10, "black shoes", 30, 44);
+insert into clothesstore values (11, "white shoes", 30, 66);
+insert into clothesstore values (12, "black socks", 4, 100);
+insert into clothesstore values (13, "white socks", 4, 120);
+insert into clothesstore values (14, "black underwear", 6, 98);
+insert into clothesstore values (15, "white underwear", 6, 120);
+SELECT * FROM clothesstore;
+
+--What items cost 15, more than 15, and less than 15?
+select * from clothesstore where price = 15;
+select * from clothesstore where price < 15;
+select * from clothesstore where price > 15;
+
+
+--What is the sum, minimum, maxium, and average of price? 
+select sum(price) from clothesstore;
+select min(price) from clothesstore;
+select max(price) from clothesstore;
+select avg(price) from clothesstore;
+
+--What is the top 5 most popular items
+Select * from clothesstore
+where popularity >=50 
+order by popularity desc
+limit 5;
