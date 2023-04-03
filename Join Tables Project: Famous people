@@ -1,0 +1,32 @@
+/* Create table about the people and what they do here, What movies are they in? Are they married to each other? */
+create table movie_stars (id integer PRIMARY KEY AUTOINCREMENT, name text, age integer);
+
+insert into movie_stars (name, age) values ("Dave Franco", 37 );
+insert into movie_stars (name, age) values ("Brad Pitt", 59);
+insert into movie_stars (name, age) values ("Allison Brie", 40);
+insert into movie_stars (name, age) values ("Angelina Jolie", 47);
+
+
+Create table movies (id integer PRIMARY KEY AUTOINCREMENT, name text,moviestars_id Integer);
+
+insert into movies (name, moviestars_id) Values ("Fight club", 2);
+insert into movies (name, moviestars_id) Values ("21 jump street", 1);
+insert into movies (name, moviestars_id) Values ("Maleficent", 4);
+insert into movies (name, moviestars_id) Values ("Somebody I use to Know", 3);
+
+Create table spouse (person1_id integer, person2_id integer);
+
+insert into spouse (person1_id, person2_id) values (1 ,3 );
+insert into spouse (person1_id, person2_id) values (2 ,4 );
+
+--What movies did the celebrities star in?
+select movie_stars.name, movies.name from movie_stars
+    left join movies
+    on movie_stars.id = movies.moviestars_id;
+
+--What are the movie stars spouse?
+select a.name, b.name from spouse
+    join movie_stars a
+    on spouse.person1_id = a.id
+    join movie_stars b
+    on spouse.person2_id = b.id
