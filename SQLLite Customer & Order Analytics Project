@@ -38,3 +38,8 @@ on F.orderID = c.order_id
 where length(orderID) = 6 
 and orderid is not 'Order ID' and quantity > 2
 
+--List all the products sold in Los Angeles in February, and include how many of each were sold.
+SELECT Product, sum(quantity)
+FROM BIT_DB.FebSales
+where length(orderID) = 6 and orderid is not 'Order ID' and location like '%Los Angeles%'
+group by product
