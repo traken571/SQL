@@ -27,13 +27,13 @@ time_signature integer NOT NULL )
 --inserted the Spotify data
 --Next, I analyzed the data
 
---Most popular songs
+--Top 10 most popular songs and artist
 
---least popular songs
+--Top 10 least popular songs
 
---longest songs
+--Top 10longest songs
 
---shortest songs
+--Top 10 shortest songs
 
 --avg duration of the songs
 
