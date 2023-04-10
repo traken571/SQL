@@ -31,7 +31,7 @@ time_signature integer NOT NULL )
 
 --Top 10 least popular songs
 
---Top 10longest songs
+--Top 10 longest songs
 
 --Top 10 shortest songs
 
