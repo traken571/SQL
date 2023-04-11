@@ -61,3 +61,15 @@ SELECT count(distinct artist_name) FROM BIT_DB.Spotifydata;
 --First I determined the avg popularity, danceability, and energy by artist and track. 
 SELECT artist_name,track_name,avg(popularity),avg(danceability),avg(energy) FROM BIT_DB.spotifydata
 GROUP BY artist_name, track_name;
+
+--(Use a CTE) Calculate the average popularity for the artists in the Spotify data table. 
+--Then, for every artist with an average popularity of 90 or above, show their name & their average popularity. 
+With tempTable as (
+select 
+Spotifydata.artist_name, avg(Spotifydata.popularity) Avg_popularity
+from Spotifydata
+group by Spotifydata.artist_name
+)
+ 
+select artist_name, Avg_popularity from tempTable
+where Avg_popularity>=90;
