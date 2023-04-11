@@ -57,3 +57,7 @@ order by Number_of_Songs_on_Chart desc;
 
 --How many artist are on the top 50 songs list
 SELECT count(distinct artist_name) FROM BIT_DB.Spotifydata;
+
+--First I determined the avg popularity, danceability, and energy by artist and track. 
+SELECT artist_name,track_name,avg(popularity),avg(danceability),avg(energy) FROM BIT_DB.spotifydata
+GROUP BY artist_name, track_name;
