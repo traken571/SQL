@@ -27,14 +27,33 @@ time_signature integer NOT NULL )
 --inserted the Spotify data
 --Next, I analyzed the data
 
---Top 10 most popular songs and artist
+--Top 10 most popular songs 
+SELECT track_name,artist_name, popularity FROM BIT_DB.Spotifydata
+order by popularity desc
+limit 10;
 
 --Top 10 least popular songs
+SELECT track_name,artist_name, popularity FROM BIT_DB.Spotifydata
+order by popularity asc
+limit 10;
 
 --Top 10 longest songs
+SELECT track_name,artist_name, duration_ms FROM BIT_DB.Spotifydata
+order by popularity desc
+limit 10;
 
 --Top 10 shortest songs
+SELECT track_name,artist_name, duration_ms FROM BIT_DB.Spotifydata
+order by popularity asc
+limit 10;
 
 --avg duration of the songs
+SELECT avg(duration_ms) FROM BIT_DB.Spotifydata;
 
 --which artist had the most songs on the list
+SELECT distinct artist_name,count(artist_name) as Number_of_Songs_on_Chart FROM BIT_DB.Spotifydata
+group by(artist_name) 
+order by Number_of_Songs_on_Chart desc;
+
+--How many artist are on the top 50 songs list
+SELECT count(distinct artist_name) FROM BIT_DB.Spotifydata;
