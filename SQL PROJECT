@@ -22,10 +22,23 @@ where title is 'Sales Support Agent';
 select distinct billingcountry from chinook.invoices;
 
 --Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+select employees.firstname as Employee_First_Name, employees.lastname as Employee_Last_Name,invoices.invoiceid, invoices.BillingCountry, 
+invoices.InvoiceDate from invoices 
+join employees
+on employees.employeeID = customers.SupportRepId
+join customers
+on invoices.customerid = customers.customerid
 
 --Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+select employees.firstname Employee_First_Name, employees.LastName Employee_Last_Name, invoices.Total,invoices.BillingCountry,
+customers.firstname,customers.lastname from invoices 
+join customers
+on invoices.customerid = customers.customerid
+join employees
+on employees.EmployeeId = customers.SupportRepId
 
 --How many Invoices were there in 2009?
+select count(*) from invoices
 
 --What are the total sales for 2009?
 
