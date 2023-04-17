@@ -27,7 +27,7 @@ invoices.InvoiceDate from invoices
 join employees
 on employees.employeeID = customers.SupportRepId
 join customers
-on invoices.customerid = customers.customerid
+on invoices.customerid = customers.customerid;
 
 --Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
 select employees.firstname Employee_First_Name, employees.LastName Employee_Last_Name, invoices.Total,invoices.BillingCountry,
@@ -35,19 +35,52 @@ customers.firstname,customers.lastname from invoices
 join customers
 on invoices.customerid = customers.customerid
 join employees
-on employees.EmployeeId = customers.SupportRepId
+on employees.EmployeeId = customers.SupportRepId;
 
 --How many Invoices were there in 2009?
-select count(*) from invoices
+select count(*) from invoices;
 
 --What are the total sales for 2009?
+select sum(total) from invoices
+where invoicedate like '%2009%';
 
 --Write a query that includes the purchased track name with each invoice line ID.
+select tracks.name, invoice_items.invoiceid from invoice_items
+join tracks
+on tracks.trackid = invoice_items.trackid;
 
 --Write a query that includes the purchased track name AND artist name with each invoice line ID.
+select artists.name Artist_Name, tracks.name Track_name, invoice_items.InvoiceId from artists
+join albums
+on albums.artistid=artists.artistid
+join tracks
+on tracks.albumid = albums.albumid
+join invoice_items
+on invoice_items.trackid = tracks.trackid
 
 --Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+select tracks.name Track_name, a.title Album_name,mt.name Media_types,g.name Genre_name from tracks
+join albums a
+on a.albumid = tracks.AlbumId
+join media_types mt
+on mt.MediaTypeId = tracks.mediatypeid
+join genres g
+on g.genreid = tracks.genreid
 
 --Show the total sales made by each sales agent.
+Select e.firstname Emplpoyee_First_Name,e.lastname Emplpoyee_Last_Name,round(sum(i.Total)) Total_Sales from employees e
+join customers c
+on c.supportrepid = e.employeeid
+join invoices i
+on i.customerid =c.customerid
+where title = 'Sales Support Agent'
+group by e.employeeid;
 
 --Which sales agent made the most dollars in sales in 2009?
+Select e.firstname Emplpoyee_First_Name,e.lastname Emplpoyee_Last_Name,round(sum(i.Total)) Total_Sales from employees e
+join customers c
+on c.supportrepid = e.employeeid
+join invoices i
+on i.customerid =c.customerid
+where title = 'Sales Support Agent' and invoicedate like '%2009%'
+group by e.employeeid;
