@@ -1,0 +1,58 @@
+--Data Definition Language
+--Create table
+create table ktstudent
+(
+ID int primary key identity(1,1),
+FirstName varchar(50),
+LastName varchar(50),
+GPA float,
+City varchar(50)
+)
+
+--Insert values into table
+insert into ktstudent (FirstName, LastName, GPA, City)
+values ('Chris', 'Smith', 4.0, 'Houston'),
+('Matt', 'Key', 3.0, 'Houston'),
+('Tom', 'Cooper', 2.7, 'Dallas'),
+('Kevin', 'Nguyen', 3.5, 'Houston'),
+('Sally', 'Tran', 4.0, 'Chicago'),
+('Tony', 'Lee', 2.0, 'Houston'),
+('David', 'Williams', 3.4, 'Fort Worth'),
+('Matt', 'Johnson', 3.0, 'Katy'),
+('Tom', 'Brown', 1.6, 'Houston'),
+('Danny', 'Le', 3.7, 'Fort Worth'),
+('Steve', 'Vu', 1.6, 'Katy'),
+('Abby', 'Jobs', 3.3, 'Dallas'),
+('Adam', 'Moore', 3.3, 'Dallas')
+
+--Select to view data
+SELECT * FROM ktstudent
+where gpa > 1
+group by City
+having count(8) > 2
+order by count(*) desc
+
+
+
+--Data Maniplulation Language
+SELECT LastName, GPA
+FROM Ktstudent
+WHERE LastName like 'Ng%';
+UPDATE Ktstudent
+Set LastName = 'Nguyen01'
+WHERE LastName like 'Nguyen';
+/* Delete */
+DELETE Ktstudent
+WHERE FirstName = 'Tom';
+ update/add column
+ALTER TABLE Ktstudent
+add Age int;
+UPDATE Ktstudent
+SET City = 'Pensacola'
+WHERE LastName = 'Smith';
+
+Drop table
+DROP TABLE ktstudent;
+
+--Should give invalid object
+select * from ktstudent
